@@ -4,19 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+   const router = useRouter();
 
   const navLinks = (
     <>
       <Link href="/" className="hover:text-red-600 font-medium">Home</Link>
       <Link href="/shop" className="hover:text-red-600 font-medium">Shop</Link>
-      <Link href="/new" className="hover:text-red-600 font-medium">New Arrivals</Link>
+      <Link href="/newarrival" className="hover:text-red-600 font-medium">New Arrivals</Link>
       <Link href="/about" className="hover:text-red-600 font-medium">About Us</Link>
-      <Link href="/contact" className="hover:text-red-600 font-medium">Contact Us</Link>
+      <Link href="/contactUs" className="hover:text-red-600 font-medium">Contact Us</Link>
     </>
   );
 
@@ -44,9 +46,12 @@ export default function Header() {
             <FaHeart className="text-xl" />
             <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full px-1">0</span>
           </div>
-          <button className="border border-red-600 text-red-600 px-4 py-1 rounded-md text-sm hover:bg-red-50 transition">
-            Log in
-          </button>
+            <button
+      className="border border-red-600 text-red-600 px-4 py-1 rounded-md text-sm hover:bg-red-50 transition"
+      onClick={() => router.push("/login")}
+    >
+      Log in
+    </button>
 
           {/* Mobile Toggle */}
           <button onClick={toggleMenu} className="md:hidden ml-2">
