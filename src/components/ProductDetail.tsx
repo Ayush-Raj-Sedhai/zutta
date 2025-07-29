@@ -1,20 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useState as useClientState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Minus, Plus, CheckCircle, Heart, Star } from 'lucide-react';
+import { Minus, Plus, CheckCircle } from 'lucide-react';
+import Link from 'next/link'; // Import Link
 
 const sizes = ['36', '37', '39', '40', '41'];
 const colors = ['#1e293b', '#7f1d1d', '#a16207']; // Navy, Maroon, Brown
 
 export default function ProductDetailPage() {
   const [quantity, setQuantity] = useState(1);
+  const [isClient, setIsClient] = useClientState(false); // State to track if we're on the client side
+
+  useEffect(() => {
+    setIsClient(true); // After component mounts, set isClient to true
+  }, []);
+
+  if (!isClient) return null; // Render nothing until the component is mounted on the client
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Image Section */}
         <div>
@@ -74,7 +82,7 @@ export default function ProductDetailPage() {
               <p className="font-medium mb-1">Size:</p>
               <div className="flex gap-2">
                 {sizes.map((s) => (
-                  <Button key={s} variant="outline" size="sm">{s}</Button> // Updated size to "sm"
+                  <Button key={s} variant="outline" size="sm">{s}</Button>
                 ))}
               </div>
             </div>
@@ -89,7 +97,10 @@ export default function ProductDetailPage() {
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
-              <Button>Add To Cart</Button>
+              {/* Use Link to navigate to the cart page */}
+              <Link href="/addtocart">
+                <Button>Add To Cart</Button>
+              </Link>
               <Button variant="secondary">Buy It Now</Button>
             </div>
           </div>
