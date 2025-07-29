@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Minus, Plus, Heart, Trash } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -131,7 +132,13 @@ export default function CartPage() {
               <span>Total</span>
               <span className="text-red-600">Rs. 13819</span>
             </div>
-            <Button className="w-full mt-6 bg-primary text-white">Proceed To Checkout</Button>
+
+            {/* ✅ Checkout Button with Link */}
+            <Link href="/checkout" className="block mt-6">
+              <Button className="w-full bg-primary text-white">
+                Proceed To Checkout
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

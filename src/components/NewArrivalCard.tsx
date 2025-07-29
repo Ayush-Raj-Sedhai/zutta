@@ -26,7 +26,7 @@ export default function NewArrivalCard({
 }: NewArrivalProps) {
   return (
     <Link href="/productdetail" className="no-underline">
-      <div className="relative rounded-2xl p-4 bg-white shadow-sm hover:shadow-md transition-all flex flex-col gap-3 cursor-pointer">
+      <div className="max-w-6xl mx-auto relative rounded-2xl p-4 bg-white shadow-sm hover:shadow-md transition-all flex flex-col gap-3 cursor-pointer">
         {/* SALE badge */}
         {isOnSale && (
           <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-md">
