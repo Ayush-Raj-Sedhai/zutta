@@ -13,7 +13,7 @@ export default function BrandLogos() {
   return (
     <section className="flex justify-around items-center py-6 bg-white flex-wrap gap-4">
       {brands.map((logo, idx) => (
-        <Image key={idx} src={`/${logo}`} alt="brand" width={80} height={40} />
+        <Image key={idx} src={`/${logo}`} alt="brand" width={90} height={50} />
       ))}
     </section>
   );
