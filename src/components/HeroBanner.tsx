@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroBanner() {
   return (
@@ -25,9 +26,12 @@ export default function HeroBanner() {
           Memory Foam <br />
           Sneakers
         </h1>
-        <button className="mt-6 px-6 py-2 border border-white rounded text-white font-semibold hover:bg-white hover:text-blue-600 transition">
-          Shop Now
-        </button>
+
+        <Link href="/shop">
+          <button className="mt-6 px-6 py-2 border border-white rounded text-white font-semibold hover:bg-white hover:text-blue-600 transition">
+            Shop Now
+          </button>
+        </Link>
       </div>
     </section>
   );

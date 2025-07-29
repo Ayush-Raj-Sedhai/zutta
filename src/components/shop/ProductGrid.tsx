@@ -1,7 +1,7 @@
-// components/shop/ProductGrid.tsx
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
 const products = [
@@ -56,13 +56,18 @@ export default function ProductGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       {products.map((product) => (
-        <div key={product.id} className=" rounded-lg p-4 relative">
+        <Link
+          key={product.id}
+          href="/productdetail"
+          className="rounded-lg p-4 relative border hover:shadow-md transition"
+        >
           {product.onSale && (
             <Badge className="absolute top-2 left-2 bg-red-600">Sale</Badge>
           )}
           {product.isFavorite && (
             <div className="absolute top-2 right-2 text-red-500 text-xl">❤️</div>
           )}
+
           <Image
             src={product.image}
             alt={product.name}
@@ -82,7 +87,7 @@ export default function ProductGrid() {
               )}
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

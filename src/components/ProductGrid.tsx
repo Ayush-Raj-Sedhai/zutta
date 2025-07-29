@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/types/product";
 
 const mockProducts: Record<string, Product[]> = {
@@ -26,18 +29,26 @@ export default function ProductGrid({ category }: { category: keyof typeof mockP
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {mockProducts[category].map((product, i) => (
-        <div key={i} className="border p-3 rounded hover:shadow">
-          <div className="relative">
-            {product.discount && (
-              <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded">
-                {product.discount} OFF
-              </span>
-            )}
-            <Image src={product.image} alt={product.name} width={200} height={150} className="mx-auto" />
+        <Link href="/productdetail" key={i} className="no-underline text-inherit">
+          <div className="border p-3 rounded hover:shadow transition cursor-pointer">
+            <div className="relative">
+              {product.discount && (
+                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded">
+                  {product.discount} OFF
+                </span>
+              )}
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={200}
+                height={150}
+                className="mx-auto"
+              />
+            </div>
+            <p className="mt-3 text-sm text-gray-600">{product.name}</p>
+            <p className="text-red-600 font-semibold">Nrs. {product.price}</p>
           </div>
-          <p className="mt-3 text-sm text-gray-600">{product.name}</p>
-          <p className="text-red-600 font-semibold">Nrs. {product.price}</p>
-        </div>
+        </Link>
       ))}
     </div>
   );
