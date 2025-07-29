@@ -80,8 +80,8 @@ export default function Header() {
     <header className="w-full border-b shadow-sm px-4 md:px-8 py-3">
       <div className="flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2 p-2 rounded-md">
-          <Image src="/shoe.png" alt="logo" width={32} height={32} />
-          <span className="text-lg font-semibold">Zutta</span>
+          <Image src="/shoe.png" alt="logo" width={42} height={42} />
+          {/* <span className="text-lg font-semibold">Zutta</span> */}
         </Link>
 
         <nav className="hidden md:flex space-x-6 text-sm text-gray-600">
@@ -102,7 +102,7 @@ export default function Header() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdown}
-                className="flex items-center space-x-1 border border-gray-600 text-gray-600 px-4 py-1 rounded-md text-sm hover:bg-gray-100 transition"
+                className="flex items-center space-x-1 border border-white text-white px-4 py-1 rounded-md text-sm hover:bg-black transition bg-black"
               >
                 <FaUser />
                 <span>Profile</span>
